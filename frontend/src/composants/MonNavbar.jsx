@@ -7,16 +7,20 @@ import { CiBellOn } from "react-icons/ci";
 import { FiLogOut } from "react-icons/fi";
 import { Badge } from "react-bootstrap";
 import profil from '../assets/img/Cheikh.jpg'
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 
 export default function MonNavbar() {
+  const navigate = useNavigate();
   const [notificationCount, setNotificationCount] = useState(0);
   const location = useLocation();
   const isDashboard = location.pathname === "/accueil/dashboard";
   const pageTitle = isDashboard ? "Dashboard" : "Liste des hôtels";
 
+  function logOut() {
+    navigate("/");
+  }
   return (
     <>
       <Navbar
@@ -63,7 +67,7 @@ export default function MonNavbar() {
                 style={{ width: "45px", height: "45px" }}
               />
             </span>
-            <FiLogOut className="icon mx-2" />
+            <FiLogOut className="icon mx-2" onClick={logOut}/>
           </Navbar.Collapse>
         </div>
       </Navbar>
