@@ -4,9 +4,12 @@ import CustomButton from "../composants/CustomButton";
 import LogoRedProduct from "../composants/LogoRedProduct";
 import ConnectInput from "../composants/inputFields";
 import { inputFieldsDataConnexion } from "../composants/Utils";
+import { LogiqueConnexion} from "../logiques/LogiqueConnexion";
 
 export default function Connexion() {
-  
+  const { formDataConnexion, setFormDataConnexion, handleSubmit } =
+    LogiqueConnexion();
+
   return (
     <>
       <div className="ConnexionContainer d-flex justify-content-center align-items-center">
@@ -16,10 +19,19 @@ export default function Connexion() {
             <p className="p1 mb-5">Connectez-vous en tant qu'admin</p>
             {inputFieldsDataConnexion.map((field, index) => (
               <div key={index} className="mb-4">
-                <ConnectInput {...field} />
+                <ConnectInput
+                  {...field}
+                  value={formDataConnexion[field.name]}
+                  onChange={(e) =>
+                    setFormDataConnexion({
+                      ...formDataConnexion,
+                      [field.name]: e.target.value,
+                    })
+                  }
+                />
               </div>
             ))}
-            <Link to="/accueil/dashboard" className="Link">
+            <Link to="" className="Link">
               <CustomButton label="Se connecter" className="connexionB" />
             </Link>
           </form>
@@ -32,7 +44,7 @@ export default function Connexion() {
 
             <p className="p2" style={{ color: "white" }}>
               Vous n'avez pas de compte?
-              <Link to="/inscription" className="Link">
+              <Link to="/Connexion" className="Link">
                 <span className="p2 ms-2" style={{ color: "#FFD964" }}>
                   S'inscrire
                 </span>

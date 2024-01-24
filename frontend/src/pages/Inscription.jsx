@@ -4,10 +4,11 @@ import CustomButton from "../composants/CustomButton";
 import LogoRedProduct from "../composants/LogoRedProduct";
 import ConnectInput from "../composants/inputFields";
 import { inputFieldsDataInscription } from "../composants/Utils";
-import { LogiqueInscription } from "../logiques/LogiqueAuthentification";
+import { LogiqueInscription } from "../logiques/LogiqueInscription";
 
 export default function Inscription() {
-  const { formData, setFormData, handleSubmit } = LogiqueInscription()
+  const { formDataInscription, setFormDataInscription, handleSubmit } =
+    LogiqueInscription();
 
   return (
     <>
@@ -24,9 +25,12 @@ export default function Inscription() {
               <div key={index} className="mb-4">
                 <ConnectInput
                   {...field}
-                  value={formData[field.name]}
+                  value={formDataInscription[field.name]}
                   onChange={(e) =>
-                    setFormData({ ...formData, [field.name]: e.target.value })
+                    setFormDataInscription({
+                      ...formDataInscription,
+                      [field.name]: e.target.value,
+                    })
                   }
                 />
               </div>

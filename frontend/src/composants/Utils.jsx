@@ -87,12 +87,14 @@ export const inputFieldsDataConnexion = [
   {
     type: "email",
     id: "email2",
+    name: "connexionEmail",
     placeholder: "E-mail",
     className: "myInput mb-3",
   },
   {
     type: "password",
     id: "password2",
+    name: "connexionPassword",
     placeholder: "Mot de passe",
     className: "myInput mb-3",
     name: "password",

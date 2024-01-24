@@ -5,7 +5,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-
 import Connexion from "./pages/Connexion";
 import Inscription from "./pages/Inscription";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -45,6 +44,7 @@ export default function App() {
   ]);
   return (
     <>
+      
       <RouterProvider router={rooter} />
     </>
   );
