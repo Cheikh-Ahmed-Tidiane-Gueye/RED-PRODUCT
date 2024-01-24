@@ -1,7 +1,7 @@
 // inputFields.jsx
 import React from "react";
 
-const inputFields = ({
+const InputFields = ({
   type,
   id,
   name,
@@ -20,11 +20,11 @@ const inputFields = ({
         className={className}
         aria-describedby={`${id}Help`}
         placeholder={placeholder}
-        value={value}
+        value={value || ""} // Ajout de la valeur par défaut
         onChange={onChange}
       />
       {label}
     </>
   );
 };
-export default inputFields;
+export default InputFields;

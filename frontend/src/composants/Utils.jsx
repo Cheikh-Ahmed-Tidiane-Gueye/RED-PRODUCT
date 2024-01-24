@@ -12,7 +12,9 @@ import img6 from "../assets/img/image 6.png";
 import img7 from "../assets/img/image 7.png";
 import img8 from "../assets/img/image 8.png";
 
-// 
+
+
+// données liste de menue
 export const MenuSide = [
   {
     style: { cursor: "pointer" },
@@ -27,7 +29,8 @@ export const MenuSide = [
     to: "/accueil/hotel",
   },
 ];
-// 
+
+// Données Cartes du Dashboars
 export const CardDatas = [
   {
     cardColor: `#A88ADD`,
@@ -78,55 +81,60 @@ export const CardDatas = [
     description: "Ici la description de ma carte",
   },
 ];
-// 
+
+// Données formulaire de connection
 export const inputFieldsDataConnexion = [
   {
     type: "email",
-    id: "exampleInputEmail1",
+    id: "email2",
     placeholder: "E-mail",
     className: "myInput mb-3",
   },
   {
     type: "password",
-    id: "exampleInputPassword1",
+    id: "password2",
     placeholder: "Mot de passe",
     className: "myInput mb-3",
     name: "password",
   },
   {
     type: "checkbox",
-    id: "exampleCheck1",
+    id: "Check2",
     className: "myInput form-check-input myform-check-input me-3 border",
     label: (
-      <label className="mb-2 form-check-label" htmlFor="exampleCheck1">
+      <label className="mb-2 form-check-label" htmlFor="exampleCheck2">
         Garder-moi connecté
       </label>
     ),
   },
 ];
-// 
+
+// Données formulaire d'inscri^ption
 export const inputFieldsDataInscription = [
   {
     type: "text",
-    placeholder: "Nom",
+    id: "nom",
+    name: "inscriptionNom", 
     className: "myInput mb-3",
+    placeholder: "Nom",
   },
   {
     type: "email",
-    id: "exampleInputEmail2",
+    id: "email1",
+    name: "inscriptionEmail",
     placeholder: "E-mail",
     className: "myInput mb-3",
   },
   {
     type: "password",
-    id: "exampleInputPassword2",
+    id: "password1",
+    name: "inscriptionPassword",
     placeholder: "Mot de passe",
     className: "myInput mb-3",
-    name: "password",
   },
   {
     type: "checkbox",
-    id: "exampleCheck2",
+    id: "Check1",
     className: "myInput form-check-input myform-check-input me-3 border",
     label: (
       <label className="mb-2 form-check-label" htmlFor="exampleCheck1">
@@ -135,7 +143,8 @@ export const inputFieldsDataInscription = [
     ),
   },
 ];
-// 
+
+// Données cates d'hotels
 export const CardHotelDatas = [
   {
     src: img1,
