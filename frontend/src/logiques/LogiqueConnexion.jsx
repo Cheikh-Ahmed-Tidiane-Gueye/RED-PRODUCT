@@ -33,7 +33,7 @@ export const LogiqueConnexion = () => {
       email: "",
       password: "",
     });
-    // navigate("/accueil/dashboard");
+    navigate("/accueil/dashboard");
   };
 
   return {
