@@ -3,21 +3,19 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-export const LogiqueInscription = () => {
+export const LogiqueInscription = (data) => {
+  
+  const SERVER_URL = "http://localhost:5000/api/inscription";
+  axios.post(SERVER_URL, formDataInscription, data);
   
   const [formDataInscription, setFormDataInscription] = useState({
     nom: "",
     email: "",
     password: "",
   });
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const SERVER_URL = "http://localhost:5000/api/inscription";
-    axios
-      .post(SERVER_URL, formDataInscription)
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
 
     // Affichez la notification personnalisée avec une durée de 5 secondes
     toast("Inscription réussit !", {
@@ -35,5 +33,9 @@ export const LogiqueInscription = () => {
     });
   };
 
-  return { formDataInscription, setFormDataInscription, handleSubmit };
+  return {
+    formDataInscription,
+    setFormDataInscription,
+    handleSubmit
+  };
 };
