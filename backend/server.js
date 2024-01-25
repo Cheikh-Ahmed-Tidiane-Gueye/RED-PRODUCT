@@ -1,20 +1,29 @@
 // server.js
 const express = require("express");
-const connectDB = require("./config/db");
-const dotenv = require("dotenv").config();
-const port = 5000;
-
-// Connexion à la base de donnée
-connectDB();
+const cors = require("cors");
+const mongoose = require("mongoose");
+const authRoutes = require("./routes/authRoutes")
+require("dotenv").config();
 
 const app = express();
-
-// Middleware qui permet de traiter les données de la request
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(cors());
 
-// Utiliser le routeur exporté
-app.use("/post", require("./routes/post.routes"));
+app.use("/api", authRoutes);
+
+const port = process.env.PORT || 5000;
+
+// Connexion à la base de donnée
+mongoose.connect(process.env.MONGO_URI).then((result) => {
+  console.log("MongoDB connected");
+})
+.catch((error) => {
+  console.error("MongoDB connection error:", error);
+  process.exit(1);
+});
+
 
 // Lancer le serveur
-app.listen(port, () => console.log("Le serveur a démarré au port " + port));
+app.listen(port, () => {
+  console.log(`Le serveur a démarré au port ${port}`);
+});

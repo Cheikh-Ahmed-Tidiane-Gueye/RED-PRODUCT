@@ -7,15 +7,22 @@ import { inputFieldsDataConnexion } from "../composants/Utils";
 import { LogiqueConnexion} from "../logiques/LogiqueConnexion";
 
 export default function Connexion() {
-  const { formDataConnexion, setFormDataConnexion, handleSubmit } =
-    LogiqueConnexion();
+  const {
+    formDataConnexion,
+    setFormDataConnexion,
+    handleSubmit
+  } = LogiqueConnexion();
 
   return (
     <>
       <div className="ConnexionContainer d-flex justify-content-center align-items-center">
         <div className="form">
           <LogoRedProduct />
-          <form action="" className="formConnect d-flex flex-column p-5 mx-4">
+          <form
+            onSubmit={handleSubmit}
+            action=""
+            className="formConnect d-flex flex-column p-5 mx-4"
+          >
             <p className="p1 mb-5">Connectez-vous en tant qu'admin</p>
             {inputFieldsDataConnexion.map((field, index) => (
               <div key={index} className="mb-4">
@@ -31,9 +38,9 @@ export default function Connexion() {
                 />
               </div>
             ))}
-            <Link to="" className="Link">
+            {/* <Link to="" className="Link"> */}
               <CustomButton label="Se connecter" className="connexionB" />
-            </Link>
+            {/* </Link> */}
           </form>
           <center>
             <Link to="/forgotpassword" className="Link">
@@ -44,7 +51,7 @@ export default function Connexion() {
 
             <p className="p2" style={{ color: "white" }}>
               Vous n'avez pas de compte?
-              <Link to="/Connexion" className="Link">
+              <Link to="/Inscription" className="Link">
                 <span className="p2 ms-2" style={{ color: "#FFD964" }}>
                   S'inscrire
                 </span>
