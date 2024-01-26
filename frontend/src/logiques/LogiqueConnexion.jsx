@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 
 export const LogiqueConnexion = (data) => {
+  
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false);
   const [formDataConnexion, setFormDataConnexion] = useState({
@@ -14,6 +15,12 @@ export const LogiqueConnexion = (data) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formDataConnexion.email || !formDataConnexion.password) {
+      toast.error("Veuillez remplir tous les champs.");
+      return;
+    }
+    
     setIsLoading(true);
 
     const SERVER_URL = "http://localhost:5000/api/connexion";

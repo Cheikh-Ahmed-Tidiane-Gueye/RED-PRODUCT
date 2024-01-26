@@ -7,8 +7,12 @@ import { inputFieldsDataInscription } from "../composants/Utils";
 import { LogiqueInscription } from "../logiques/LogiqueInscription";
 
 export default function Inscription() {
-  const { formDataInscription, setFormDataInscription, handleSubmit } =
-    LogiqueInscription();
+  const {
+    formDataInscription,
+    setFormDataInscription,
+    handleSubmit,
+    isLoading,
+  } = LogiqueInscription();
 
   return (
     <>
@@ -35,7 +39,11 @@ export default function Inscription() {
                 />
               </div>
             ))}
-            <CustomButton label="S'inscrire" className="connexionB" />
+            <CustomButton
+              label={isLoading ? "Inscription en cour..." : "S'inscrire"}
+              className="connexionB"
+              disabled={isLoading}
+            />
           </form>
           <center className="my-3">
             <p className="p2" style={{ color: "white" }}>
