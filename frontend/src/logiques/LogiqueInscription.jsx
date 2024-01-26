@@ -16,6 +16,8 @@ export const LogiqueInscription = (data) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Regex pour vérifier la validité de l'e-mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (
       !formDataInscription.nom ||
@@ -26,9 +28,15 @@ export const LogiqueInscription = (data) => {
       return;
     }
 
+    // Vérification de la validité de l'e-mail
+    if (!emailRegex.test(formDataInscription.email)) {
+      toast.error("Veuillez entrer une adresse e-mail valide.");
+      return;
+    }
+    
     setIsLoading(true);
 
-    const SERVER_URL = "http://localhost:5000/api/inscription";
+    const SERVER_URL = "https://red-product-tzz8.onrender.com/api/inscription";
     try {
       let data = {
         formDataInscription,
@@ -42,12 +50,11 @@ export const LogiqueInscription = (data) => {
 
       toast.success("Inscription reussie, vous pouvez vous connecter");
 
-      
-    setFormDataInscription({
-      nom: "",
-      email: "",
-      password: "",
-    });
+      setFormDataInscription({
+        nom: "",
+        email: "",
+        password: "",
+      });
 
       navigate("/");
       setIsLoading(false);
