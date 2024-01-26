@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 // Schéma des utilisateurs dans la base de données MongoDB
 const utilisateurSchema = mongoose.Schema({
