@@ -6,6 +6,7 @@ import axios from "axios";
 
 export const LogiqueConnexion = (data) => {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false);
   const [formDataConnexion, setFormDataConnexion] = useState({
     email: "",
     password: "",
@@ -13,8 +14,10 @@ export const LogiqueConnexion = (data) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const SERVER_URL = "http://localhost:5000/api/connexion";
+
     try {
       let data = {
         formDataConnexion,
@@ -36,7 +39,9 @@ export const LogiqueConnexion = (data) => {
       });
 
       navigate("/accueil/dashboard");
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       toast.error("Connexion échouée, veuillez vérifier vos informations");
       console.error(error);
     }
@@ -46,5 +51,6 @@ export const LogiqueConnexion = (data) => {
     formDataConnexion,
     setFormDataConnexion,
     handleSubmit,
+    isLoading,
   };
 };

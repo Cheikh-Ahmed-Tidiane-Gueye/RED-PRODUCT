@@ -4,14 +4,11 @@ import CustomButton from "../composants/CustomButton";
 import LogoRedProduct from "../composants/LogoRedProduct";
 import ConnectInput from "../composants/inputFields";
 import { inputFieldsDataConnexion } from "../composants/Utils";
-import { LogiqueConnexion} from "../logiques/LogiqueConnexion";
+import { LogiqueConnexion } from "../logiques/LogiqueConnexion";
 
 export default function Connexion() {
-  const {
-    formDataConnexion,
-    setFormDataConnexion,
-    handleSubmit
-  } = LogiqueConnexion();
+  const { formDataConnexion, setFormDataConnexion, handleSubmit, isLoading } =
+    LogiqueConnexion();
 
   return (
     <>
@@ -38,9 +35,11 @@ export default function Connexion() {
                 />
               </div>
             ))}
-            {/* <Link to="" className="Link"> */}
-              <CustomButton label="Se connecter" className="connexionB" />
-            {/* </Link> */}
+            <CustomButton
+              label={isLoading ? "Chargement..." : "Se connecter"}
+              className="connexionB"
+              disabled={isLoading}
+            />
           </form>
           <center>
             <Link to="/forgotpassword" className="Link">
