@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import { CiSearch } from "react-icons/ci";
@@ -12,15 +12,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 export default function MonNavbar() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [notificationCount, setNotificationCount] = useState(0);
   const location = useLocation();
   const isDashboard = location.pathname === "/accueil/dashboard";
   const pageTitle = isDashboard ? "Dashboard" : "Liste des hôtels";
 
-  function logOut() {
-    navigate("/");
-  }
   return (
     <>
       <Navbar
@@ -67,7 +64,7 @@ export default function MonNavbar() {
                 style={{ width: "45px", height: "45px" }}
               />
             </span>
-            <FiLogOut className="icon mx-2" onClick={logOut}/>
+            <FiLogOut className="icon mx-2" onClick={"logOut"}/>
           </Navbar.Collapse>
         </div>
       </Navbar>

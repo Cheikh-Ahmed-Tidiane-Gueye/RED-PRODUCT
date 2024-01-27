@@ -4,7 +4,8 @@ import CustomButton from "../composants/CustomButton";
 import LogoRedProduct from "../composants/LogoRedProduct";
 import ConnectInput from "../composants/inputFields";
 import { inputFieldsDataInscription } from "../composants/Utils";
-import { LogiqueInscription } from "../logiques/LogiqueInscription";
+import { LogiqueInscription } from "../services/Logiques";
+
 
 export default function Inscription() {
   const {
