@@ -11,7 +11,7 @@ async function inscriptionUtilisateurs(req, res) {
     const duplicate = await utilisateurs.find({ email });
     if (duplicate && duplicate.length > 0) {
       return res.status(400).send({
-        message: "Utilisateur déjà inscrit avec cette email",
+        message: "Utilisateur déjà inscrit avrc success",
       });
     }
     let newUtilisateur = new utilisateurs({ nom, email, password });
@@ -63,9 +63,22 @@ async function connexionUtilisateurs(req, res) {
   }
 }
 
+// Fonction de déconnexion
+// async function deconnexionUtilisateurs(req, res) {
+//   try {
+//     res.clearCookie("jwtToken");
+//     res.status(200).send({ message: "Déconnexion réussie" });
+//     console.log(res);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error);
+//   }
+// }
+
 const authController = {
   inscriptionUtilisateurs,
   connexionUtilisateurs,
+  // deconnexionUtilisateurs,
 };
 
 module.exports = authController;

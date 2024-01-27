@@ -9,20 +9,16 @@ const app = express();
 app.use(express.json());
 
 // Connexion à la base de donnée
-mongoose.connect(process.env.MONGO_URI).then((result) => {
-  console.log("MongoDB connected");
-})
-.catch((error) => {
-  console.error("MongoDB connection error:", error);
-  process.exit(1);
-});
+mongoose.connect(process.env.MONGO_URI)
+  .then((result) => {
+    console.log("MongoDB connected");
+  })
+  .catch((error) => {
+    console.error("MongoDB connection error:", error);
+    process.exit(1);
+  });
 
 app.use(cors());
-app.use(
-  cors({
-    origin: "https://red-product.vercel.app",
-  })
-);
 
 app.use("/api", authRoutes);
 
