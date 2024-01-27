@@ -11,6 +11,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Accueil from "./pages/Accueil";
 import Dashboard from "./pages/Dashboard";
 import ListeHotel from "./pages/ListeHotel";
+import Modal from "./composants/Modal";
 
 export default function App() {
 
@@ -41,6 +42,10 @@ export default function App() {
         },
       ],
     },
+    {
+      path: "/modal",
+      element: <Modal/>
+    }
   ]);
   return (
     <>

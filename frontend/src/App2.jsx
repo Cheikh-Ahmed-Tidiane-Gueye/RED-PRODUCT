@@ -24,7 +24,7 @@ export default function App2() {
           <Route path="/accueil/dashboard" element={<Dashboard />} />
           <Route path="/accueil/hotel" element={<ListeHotel />} />
         </Route>
-        <Route path="/ " element={<Modal />} />
+        <Route path="/modal" element={<Modal />} />
       </Routes>
     </Router>
   );
