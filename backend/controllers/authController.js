@@ -11,8 +11,8 @@ async function inscriptionUtilisateurs(req, res) {
     const duplicate = await utilisateurs.find({ email });
     if (duplicate && duplicate.length > 0) {
       return res.status(400).send({
-        message: "Utilisateur déjà inscrit avrc success",
-      });
+        message: "Cet e-mail est déjà associé à un compte. Veuillez vous connecter ou utiliser un autre e-mail.",
+      })
     }
     let newUtilisateur = new utilisateurs({ nom, email, password });
     const result = await newUtilisateur.save();
@@ -46,7 +46,7 @@ async function connexionUtilisateurs(req, res) {
       },
       secretKey,
       {
-        expiresIn: "1h",
+        expiresIn: "24h",
       }
     );
     let finalData = {
@@ -64,21 +64,21 @@ async function connexionUtilisateurs(req, res) {
 }
 
 // Fonction de déconnexion
-// async function deconnexionUtilisateurs(req, res) {
-//   try {
-//     res.clearCookie("jwtToken");
-//     res.status(200).send({ message: "Déconnexion réussie" });
-//     console.log(res);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send(error);
-//   }
-// }
+async function deconnexionUtilisateurs(req, res) {
+  try {
+    res.clearCookie("jwtToken");
+    res.status(200).send({ message: "Déconnexion réussie" });
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+}
 
 const authController = {
   inscriptionUtilisateurs,
   connexionUtilisateurs,
-  // deconnexionUtilisateurs,
+  deconnexionUtilisateurs,
 };
 
 module.exports = authController;
