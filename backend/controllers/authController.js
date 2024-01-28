@@ -13,8 +13,9 @@ async function inscriptionUtilisateurs(req, res) {
     const duplicate = await utilisateurs.find({ email });
     if (duplicate && duplicate.length > 0) {
       return res.status(400).send({
-        message: "Cet e-mail est déjà associé à un compte. Veuillez vous connecter ou utiliser un autre e-mail.",
-      })
+        message:
+          "Cet e-mail est déjà associé à un compte. Veuillez vous connecter ou utiliser un autre e-mail.",
+      });
     }
     let newUtilisateur = new utilisateurs({ nom, email, password });
     const result = await newUtilisateur.save();
@@ -56,10 +57,10 @@ async function connexionUtilisateurs(req, res) {
       nom: utilisateur?.nom,
       email: utilisateur?.email,
       password: utilisateur?.password,
-      token
+      token,
     };
     res.send(finalData);
-  } catch(error) {
+  } catch (error) {
     console.log(error);
     res.status(400).send(error);
   }
@@ -81,17 +82,17 @@ async function deconnexionUtilisateurs(req, res) {
 async function ajouthotel(req, res) {
   try {
     // Récupérer les données du formulaire
-    const { nom, adresse, email, number, prix, devise, src } = req.body;
+    const { src, nom, adresse, email, number, prix, devise } = req.body;
 
     // Créer une nouvelle instance d'hôtel avec les données
     const newHotel = new hotelsModel({
+      src,
       nom,
       adresse,
       email,
       number,
       prix,
       devise,
-      src,
     });
 
     // Enregistrer l'hôtel dans la base de données
@@ -105,11 +106,23 @@ async function ajouthotel(req, res) {
   }
 }
 
+// Recuperation données hotel
+async function getHotels(req, res) {
+  try {
+    const hotels = await hotelsModel.find();
+    res.status(200).json(hotels);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+}
+
 const authController = {
   inscriptionUtilisateurs,
   connexionUtilisateurs,
   deconnexionUtilisateurs,
   ajouthotel,
+  getHotels,
 };
 
 module.exports = authController;
