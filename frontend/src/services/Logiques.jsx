@@ -163,7 +163,7 @@ export const logOut = () => {
 export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [formDataAjoutCartesHotel, setFormDataAjoutCartesHotel] = useState({
-    src: "",
+    // src: "",
     nom: "",
     adresse: "",
     email: "",
@@ -180,7 +180,7 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
 
       // Utilisez formDataAjoutCartesHotel pour créer un nouvel objet hôtel
       const newHotel = {
-        src: formDataAjoutCartesHotel.src,
+        // src: formDataAjoutCartesHotel.src,
         nom: formDataAjoutCartesHotel.nom,
         adresse: formDataAjoutCartesHotel.adresse,
         email: formDataAjoutCartesHotel.email,
@@ -190,10 +190,9 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
       };
 
       // Appelez votre API pour ajouter l'hôtel à la base de données
-      const response = await axios.post(
-        SERVER_URL + "/ajouthotel",
-        newHotel
-      );
+      const response = await axios.post(SERVER_URL + "/ajouthotel", newHotel, {
+        withCredentials: true,
+      });
 
       // Vérifiez la réponse
       if (response.data && response.data.message) {
