@@ -36,7 +36,7 @@ export default function Connexion() {
               </div>
             ))}
             <CustomButton
-              label={isLoading ? "Chargement..." : "Se connecter"}
+              label={isLoading ? "Connexion en cour ..." : "Se connecter"}
               className="connexionB"
               disabled={isLoading}
             />

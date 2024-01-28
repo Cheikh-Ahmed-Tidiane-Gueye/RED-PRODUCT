@@ -197,6 +197,7 @@ export const CardHotelDatas = [
     adresse: "Boulevard Martin Luther King Dakar, 11500",
     nom: "Hôtel Terrou-Bi",
     prix: "25.000 XOF par nuit",
+    className: "col-lg-3 col-md-5 col-sm-9 col-xs-12 px-0 px-sx-3"
   },
   {
     src: img2,
