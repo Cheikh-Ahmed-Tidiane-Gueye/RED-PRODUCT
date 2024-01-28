@@ -175,30 +175,50 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Utilisez formDataAjoutCartesHotel pour créer un nouvel objet hôtel
-    const newHotel = {
-      src: formDataAjoutCartesHotel.src,
-      nom: formDataAjoutCartesHotel.nom,
-      adresse: formDataAjoutCartesHotel.adresse,
-      email: formDataAjoutCartesHotel.email,
-      number: formDataAjoutCartesHotel.number,
-      prix: formDataAjoutCartesHotel.prix,
-      devise: formDataAjoutCartesHotel.devise,
-    };
+    try {
+      setIsLoading(true);
 
-    // Appeler la fonction de callback pour ajouter le nouvel hôtel à la liste
-    onAddHotel(newHotel);
+      // Utilisez formDataAjoutCartesHotel pour créer un nouvel objet hôtel
+      const newHotel = {
+        src: formDataAjoutCartesHotel.src,
+        nom: formDataAjoutCartesHotel.nom,
+        adresse: formDataAjoutCartesHotel.adresse,
+        email: formDataAjoutCartesHotel.email,
+        number: formDataAjoutCartesHotel.number,
+        prix: formDataAjoutCartesHotel.prix,
+        devise: formDataAjoutCartesHotel.devise,
+      };
 
-    // Réinitialiser le formulaire
-    setFormDataAjoutCartesHotel({
-      src: "",
-      nom: "",
-      adresse: "",
-      email: "",
-      number: "",
-      prix: "",
-      devise: "",
-    });
+      // Appelez votre API pour ajouter l'hôtel à la base de données
+      const response = await axios.post(
+        SERVER_URL + "/ajouthotel",
+        newHotel
+      );
+
+      // Vérifiez la réponse
+      if (response.data && response.data.message) {
+        toast.success(response.data.message);
+        // Appeler la fonction de callback pour ajouter le nouvel hôtel à la liste
+        onAddHotel(newHotel);
+        // Réinitialiser le formulaire
+        setFormDataAjoutCartesHotel({
+          src: "",
+          nom: "",
+          adresse: "",
+          email: "",
+          number: "",
+          prix: "",
+          devise: "",
+        });
+      } else {
+        toast.error("Une erreur s'est produite lors de l'ajout de l'hôtel.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Une erreur s'est produite lors de l'ajout de l'hôtel.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return {
