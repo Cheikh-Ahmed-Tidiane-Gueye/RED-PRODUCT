@@ -260,7 +260,7 @@ label {
   font-size: bold;
 }
 .CardContainer{
-  position: relative;
+  /* position: relative; */
 }
 .titre{
   width: 75%;
@@ -320,12 +320,16 @@ label {
 }
 .addHotel{
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: 25%;
   height: 58px;
-  padding: 13px 23px;
+  padding: 0px 23px;
+  padding-top: 12px;
   justify-content: center;
   /* align-items: center; */
-  gap: 10px;
+  /* gap: 10px; */
   background-color: white;
   color: black;
 }
@@ -550,7 +554,7 @@ label {
   }
   .Modal{
     left: 10%;
-    top: 10%;
+    top: 5%;
     height: 85%;
   }
 }
@@ -592,7 +596,7 @@ label {
   }
   .addHotel {
     width: 50%;
-  display: none;
+  /* display: none; */
   }
   .Modal{
     padding: 0px 10px;
