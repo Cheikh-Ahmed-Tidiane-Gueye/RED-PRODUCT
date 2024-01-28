@@ -395,16 +395,78 @@ label {
   background: #FFF;
 }
 .modalHeader{
-  height: 15%;
+  display: flex;
+  align-items: end;
+  height: 10%;
   border-bottom: 2.647px solid #DDD;
 }
 .titreHeader{
-    width: 100%;
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 65%;
+  height: 50%;
+  display: flex;
+  /* padding: 5px; */
+  gap: 10px;
+}
+.MH2{
+  color: #555;
+  font-family: Roboto;
+  font-size: 21.742px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34.17px; /* 157.167% */
+  text-transform: uppercase;
+}
+.Micon{
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.modalBody{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalForm{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+}
+.myInputModal{
+  width: 49%;
+  height: 52.937px;
+  border-radius: 14px;
+  border: 1.323px solid #DDD;
+  padding: 0px 10px;
+  /* margin-bottom: 25px; */
+  margin: 25px 0;
+}
+.myInputModalFile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  border: 1.302px solid #DDD;
+  width: 100%;
+  height: 236.124px;
+  text-decoration: none;
+}
+.ModalFile{
+}
+.boutonEnv{
+  width: 178px;
+  height: 59px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  padding-top: 20px;
+  border-radius: 14px;
+  background: #555;   
 }
 /*--------- Media Queries -------- */
 @media screen and (max-width:1024px) {
@@ -515,6 +577,26 @@ label {
     width: 50%;
   display: none;
   }
+  .Modal{
+    padding: 0px 10px;
+  }
+  .modalForm{
+    flex-direction: column;
+  }
+  .myInputModal{
+    width: 100%;
+    margin: 10px 0px;
+  }
+  .titreHeader{
+    width: 100%;
+  }
+  .myInputModalFile {
+    width: 100%;
+    height: 136.124px;
+   }
+  .boutonEnv{
+    margin-top: 10px;
+  }
 }
 @media screen and (max-width:576px) {
   .grid-container {
@@ -540,5 +622,6 @@ label {
   .plus{
     font-size: 12px;
   }
+  
 }
 /* ------------------------------- */

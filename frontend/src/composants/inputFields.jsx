@@ -20,10 +20,9 @@ const InputFields = ({
         className={className}
         aria-describedby={`${id}Help`}
         placeholder={placeholder}
-        value={value || ""} // Ajout de la valeur par défaut
+        value={value} // Ajout de la valeur par défaut
         onChange={onChange}
       />
-      {label}
     </>
   );
 };

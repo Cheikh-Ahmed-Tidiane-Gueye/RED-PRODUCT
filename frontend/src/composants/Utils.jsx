@@ -110,7 +110,7 @@ export const inputFieldsDataConnexion = [
   },
 ];
 
-// Données formulaire d'inscri^ption
+// Données formulaire d'inscription
 export const inputFieldsDataInscription = [
   {
     type: "text",
@@ -142,6 +142,52 @@ export const inputFieldsDataInscription = [
         Accepter les termes et la politique
       </label>
     ),
+  },
+];
+// Données formulaire d'inscri^ption
+export const inputFieldsDataModal = [
+  {
+    label: "Nom de l'hotel",
+    type: "text",
+    id: "nom",
+    name: "Nom",
+    className: "myInputModal col-lg-4 col-md-5 col-sm-12",
+    placeholder: "Nom de l'hotel",
+  },
+  {
+    type: "text",
+    id: "adresse",
+    name: "adresse",
+    className: "myInputModal col-lg-4 col-md-5 col-sm-12",
+    placeholder: "Addresse",
+  },
+  {
+    type: "text",
+    id: "Email",
+    name: "Email",
+    className: "myInputModal col-lg-4 col-md-5 col-sm-12",
+    placeholder: "E-mail",
+  },
+  {
+    type: "number",
+    id: "telephone",
+    name: "Nom hotel",
+    className: "myInputModal col-lg-4 col-md-5 col-sm-12",
+    placeholder: "Numéro de telephone",
+  },
+  {
+    type: "select",
+    id: "",
+    name: "Nomhotel",
+    className: "myInputModal col-lg-4 col-md-5 col-sm-12",
+    placeholder: "Prix par nuit",
+  },
+  {
+    type: "text",
+    id: "",
+    name: "Nom hotel",
+    className: "myInputModal col-lg-4 col-md-5 col-sm-12",
+    placeholder: "Devise",
   },
 ];
 
