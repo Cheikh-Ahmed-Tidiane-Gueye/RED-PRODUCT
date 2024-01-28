@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect   } from "react";
 import CustomButton from "../composants/CustomButton";
 import { AiOutlinePlus } from "react-icons/ai";
 import CardHotel from "../composants/CardHotel";
 import { CardHotelDatas } from "../composants/Utils";
 import Modal from "../composants/Modal";
+import axios from "axios";
 
+const SERVER_URL = "https://red-product-tzz8.onrender.com/api";
 export default function ListeHotel() {
   const [isModalVisible, setModalVisible] = useState(false);
   const [hotelList, setHotelList] = useState([]);
@@ -12,9 +14,27 @@ export default function ListeHotel() {
     setModalVisible(!isModalVisible);
   };
 
+  useEffect(() => {
+    const fetchHotels = async () => {
+      const response = await axios.get(`${SERVER_URL}/hotels`);
+      if (response.data) {
+        setHotelList(response.data);
+      }
+    };
+
+    fetchHotels();
+  }, []);
+
   // Fonction pour ajouter un nouvel hôtel à la liste
-  const addHotelToList = (newHotel) => {
+  const addHotelToList = async (newHotel) => {
     setHotelList([...hotelList, newHotel]);
+
+    // Appeler la route pour récupérer les données mises à jour
+    const response = await axios.get(SERVER_URL + "/hotels");
+    if (response.data) {
+      // Mettez à jour la liste des hôtels avec les nouvelles données
+      setHotelList(response.data);
+    }
   };
 
   return (
