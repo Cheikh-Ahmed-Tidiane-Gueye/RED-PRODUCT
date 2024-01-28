@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
+const SERVER_URL = "https://red-product-tzz8.onrender.com/api";
+
 // LogiqueInscription.jsx
 export const LogiqueInscription = (data) => {
   const navigate = useNavigate();
@@ -34,14 +36,16 @@ export const LogiqueInscription = (data) => {
     }
 
     setIsLoading(true);
-
-    const SERVER_URL = "https://red-product-tzz8.onrender.com/api/inscription";
     try {
       let data = {
         formDataInscription,
       };
 
-      const response = await axios.post(SERVER_URL, formDataInscription, data);
+      const response = await axios.post(
+        SERVER_URL + "/inscription",
+        formDataInscription,
+        data
+      );
 
       // console.log(response.data);
 
@@ -99,14 +103,18 @@ export const LogiqueConnexion = (data) => {
 
     setIsLoading(true);
 
-    const SERVER_URL = "https://red-product-tzz8.onrender.com/api/connexion";
+    
 
     try {
       let data = {
         formDataConnexion,
       };
 
-      const response = await axios.post(SERVER_URL, formDataConnexion, data);
+      const response = await axios.post(
+        SERVER_URL+"/connexion",
+        formDataConnexion,
+        data
+      );
 
       console.log(response.data);
 
