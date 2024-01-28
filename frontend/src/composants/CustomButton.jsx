@@ -4,7 +4,7 @@ const CustomButton = ({ label, onClick, style, className, classNameLabel, icon, 
   return (
     <button
       type="submit"
-      className={`btn border border-1 connectBtn ${className}`}
+      className={`border border-1 connectBtn ${className}`}
       onClick={onClick}
       style={style}
     >

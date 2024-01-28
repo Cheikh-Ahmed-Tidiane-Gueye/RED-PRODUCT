@@ -17,11 +17,15 @@ html, body, #root{
 
 /* Composant style */
 .connectBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 320px;
   height: 50.67px;
   border-radius: 5.33px;
   color: white;
   background-color: #45484B;
+  padding-top: 15px;
 }
 .connexionB:hover, .connexionB:active, .connexionB:focus{
   color: white;
@@ -244,6 +248,7 @@ label {
 }
 /* Partit Dashboard */
 .hotelContainer{
+  /* position: relative; */
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
@@ -253,6 +258,9 @@ label {
   padding: 15px 20px;
   background-color: white;
   font-size: bold;
+}
+.CardContainer{
+  position: relative;
 }
 .titre{
   width: 75%;
@@ -393,6 +401,10 @@ label {
   padding: 0 50px;
   border: 1.323px solid #DDD;
   background: #FFF;
+  position: absolute;
+  top: 1%;
+  left: 30%;
+  z-index: 1;
 }
 .modalHeader{
   display: flex;
@@ -536,6 +548,11 @@ label {
     justify-content: center;
     align-items: center;
   }
+  .Modal{
+    left: 10%;
+    top: 10%;
+    height: 85%;
+  }
 }
 @media screen and (max-width:768px) {
   .grid-container {
@@ -579,6 +596,9 @@ label {
   }
   .Modal{
     padding: 0px 10px;
+    left: 10%;
+    height: 85%;
+    top: 2%;
   }
   .modalForm{
     flex-direction: column;
@@ -596,6 +616,10 @@ label {
    }
   .boutonEnv{
     margin-top: 10px;
+    background-color: #555;
+  }
+  .boutonEnv:hover, .boutonEnv:focus{
+    background-color: #555;
   }
 }
 @media screen and (max-width:576px) {

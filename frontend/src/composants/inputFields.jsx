@@ -23,6 +23,7 @@ const InputFields = ({
         value={value} // Ajout de la valeur par défaut
         onChange={onChange}
       />
+      {label}
     </>
   );
 };

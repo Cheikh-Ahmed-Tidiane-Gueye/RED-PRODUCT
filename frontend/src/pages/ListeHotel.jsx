@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from "react";
 import CustomButton from "../composants/CustomButton";
 import { AiOutlinePlus } from "react-icons/ai";
 import CardHotel from "../composants/CardHotel";
 import { CardHotelDatas } from "../composants/Utils";
+import Modal from "../composants/Modal";
 
 export default function ListeHotel() {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <>
       <div className="hotelContainer">
@@ -16,9 +22,10 @@ export default function ListeHotel() {
           label=" Créer un nouveau hôtel"
           className="addHotel"
           classNameLabel="plus"
+          onClick={handleModalToggle}
         />
       </div>
-
+      {isModalVisible && <Modal onClose={handleModalToggle} />}
       <div className="CardContainer container-fluid">
         <div
           className="CardRow row d-flex
@@ -27,7 +34,7 @@ export default function ListeHotel() {
           align-items-center"
         >
           {CardHotelDatas.map((item, index) => (
-            <CardHotel {...item} key={index}/>
+            <CardHotel {...item} key={index} />
           ))}
         </div>
       </div>

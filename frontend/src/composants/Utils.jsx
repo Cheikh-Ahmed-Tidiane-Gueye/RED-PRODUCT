@@ -147,7 +147,6 @@ export const inputFieldsDataInscription = [
 // Données formulaire d'inscri^ption
 export const inputFieldsDataModal = [
   {
-    label: "Nom de l'hotel",
     type: "text",
     id: "nom",
     name: "Nom",
