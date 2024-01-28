@@ -11,6 +11,7 @@ const utilisateurSchema = mongoose.Schema({
   },
 });
 
+
 // Methode pour archurer le mot de passe 
 utilisateurSchema.pre("save", async function (next) {
   const utilisateurs = this;

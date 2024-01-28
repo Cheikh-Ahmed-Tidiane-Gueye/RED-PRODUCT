@@ -1,4 +1,6 @@
 const utilisateurs = require("../models/utilisateurs");
+// const hotels = require("../models/hotels")
+const hotelsModel = require("../models/hotels");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -75,10 +77,39 @@ async function deconnexionUtilisateurs(req, res) {
   }
 }
 
+// Fonction d'ajout d'hotel
+async function ajouthotel(req, res) {
+  try {
+    // Récupérer les données du formulaire
+    const { nom, adresse, email, number, prix, devise, src } = req.body;
+
+    // Créer une nouvelle instance d'hôtel avec les données
+    const newHotel = new hotelsModel({
+      nom,
+      adresse,
+      email,
+      number,
+      prix,
+      devise,
+      src,
+    });
+
+    // Enregistrer l'hôtel dans la base de données
+    const result = await newHotel.save();
+
+    // Envoyer une réponse réussie
+    res.status(201).send({ message: "Hôtel ajouté avec succès", data: result });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
+  }
+}
+
 const authController = {
   inscriptionUtilisateurs,
   connexionUtilisateurs,
   deconnexionUtilisateurs,
+  ajouthotel,
 };
 
 module.exports = authController;
