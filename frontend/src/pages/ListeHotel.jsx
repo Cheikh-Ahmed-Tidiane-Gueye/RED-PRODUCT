@@ -7,15 +7,23 @@ import Modal from "../composants/Modal";
 
 export default function ListeHotel() {
   const [isModalVisible, setModalVisible] = useState(false);
-
+  const [hotelList, setHotelList] = useState([]);
   const handleModalToggle = () => {
     setModalVisible(!isModalVisible);
   };
+
+  // Fonction pour ajouter un nouvel hôtel à la liste
+  const addHotelToList = (newHotel) => {
+    setHotelList([...hotelList, newHotel]);
+  };
+
   return (
     <>
       <div className="hotelContainer">
         <div className="titre">
-          <h1 className="titreHotel">Hotel</h1>
+          <h1 className="titreHotel">
+            Hotel <span className="fw-ligh">{8}</span>
+          </h1>
         </div>
         <CustomButton
           icon={<AiOutlinePlus />}
@@ -25,7 +33,9 @@ export default function ListeHotel() {
           onClick={handleModalToggle}
         />
       </div>
-      {isModalVisible && <Modal onClose={handleModalToggle} />}
+      {isModalVisible && (
+        <Modal onClose={handleModalToggle} onAddHotel={addHotelToList} />
+      )}
       <div className="CardContainer container-fluid">
         <div
           className="CardRow row d-flex
@@ -33,7 +43,7 @@ export default function ListeHotel() {
           justify-content-sm-center
           align-items-center"
         >
-          {CardHotelDatas.map((item, index) => (
+          {hotelList.map((item, index) => (
             <CardHotel {...item} key={index} />
           ))}
         </div>

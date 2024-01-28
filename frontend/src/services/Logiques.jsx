@@ -103,15 +103,13 @@ export const LogiqueConnexion = (data) => {
 
     setIsLoading(true);
 
-    
-
     try {
       let data = {
         formDataConnexion,
       };
 
       const response = await axios.post(
-        SERVER_URL+"/connexion",
+        SERVER_URL + "/connexion",
         formDataConnexion,
         data
       );
@@ -159,4 +157,54 @@ export const logOut = () => {
     console.error("Erreur lors de la déconnexion", error);
   }
   return {};
+};
+
+// Logique ajout cartes d'hotels
+export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formDataAjoutCartesHotel, setFormDataAjoutCartesHotel] = useState({
+    src: "",
+    nom: "",
+    adresse: "",
+    email: "",
+    number: "",
+    prix: "",
+    devise: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Utilisez formDataAjoutCartesHotel pour créer un nouvel objet hôtel
+    const newHotel = {
+      src: formDataAjoutCartesHotel.src,
+      nom: formDataAjoutCartesHotel.nom,
+      adresse: formDataAjoutCartesHotel.adresse,
+      email: formDataAjoutCartesHotel.email,
+      number: formDataAjoutCartesHotel.number,
+      prix: formDataAjoutCartesHotel.prix,
+      devise: formDataAjoutCartesHotel.devise,
+    };
+
+    // Appeler la fonction de callback pour ajouter le nouvel hôtel à la liste
+    onAddHotel(newHotel);
+
+    // Réinitialiser le formulaire
+    setFormDataAjoutCartesHotel({
+      src: "",
+      nom: "",
+      adresse: "",
+      email: "",
+      number: "",
+      prix: "",
+      devise: "",
+    });
+  };
+
+  return {
+    formDataAjoutCartesHotel,
+    setFormDataAjoutCartesHotel,
+    handleSubmit,
+    isLoading,
+  };
 };
