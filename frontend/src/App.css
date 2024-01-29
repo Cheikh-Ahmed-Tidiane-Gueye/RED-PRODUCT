@@ -400,13 +400,13 @@ label {
   background-color: #ebeaea;
 }
 .Modal{
-  height: 90%;
+  height: 97%;
   border-radius: 11px;
   padding: 0 50px;
   border: 1.323px solid #DDD;
   background: #FFF;
   position: absolute;
-  top: 1%;
+  top:-4.5%;
   left: 30%;
   z-index: 1;
 }
@@ -468,7 +468,7 @@ label {
   border-radius: 14px;
   border: 1.302px solid #DDD;
   width: 100%;
-  height: 236.124px;
+  height: 236px;
   text-decoration: none;
 }
 .ModalFile{
@@ -479,8 +479,8 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px 0;
-  padding-top: 20px;
+  margin-top: 30px;
+  /* padding-top: 20px; */
   border-radius: 14px;
   background: #555;   
 }
