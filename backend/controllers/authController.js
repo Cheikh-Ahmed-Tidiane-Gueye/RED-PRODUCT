@@ -2,7 +2,9 @@ const utilisateurs = require("../models/utilisateurs");
 // const hotels = require("../models/hotels")
 const hotelsModel = require("../models/hotels");
 const jwt = require("jsonwebtoken");
+const multer = require("multer");
 require("dotenv").config();
+
 
 const secretKey = process.env.JWT_SECRET;
 
@@ -78,15 +80,27 @@ async function deconnexionUtilisateurs(req, res) {
   }
 }
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "_" + file.originalname);
+  },
+});
+
 // Fonction d'ajout d'hotel
 async function ajouthotel(req, res) {
   try {
     // Récupérer les données du formulaire
-    const { src, nom, adresse, email, number, prix, devise } = req.body;
+    const { nom, adresse, email, number, prix, devise } = req.body;
 
-    // Créer une nouvelle instance d'hôtel avec les données
+    // Récupérer le fichier téléchargé
+    const file = req.file;
+
+    // Créer une nouvelle instance d'hôtel avec les données et le nom du fichier
     const newHotel = new hotelsModel({
-      src,
+      src: file.filename,
       nom,
       adresse,
       email,
@@ -105,6 +119,8 @@ async function ajouthotel(req, res) {
     res.status(400).send(error);
   }
 }
+
+const upload = multer({ storage: storage });
 
 // Recuperation données hotel
 async function getHotels(req, res) {
