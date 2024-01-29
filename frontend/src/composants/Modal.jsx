@@ -3,7 +3,7 @@ import { GoArrowLeft } from "react-icons/go";
 import ModalInput from "../composants/inputFields";
 import { inputFieldsDataModal } from "../composants/Utils";
 import CustomButton from "./CustomButton";
-import { LogiqueAjoutCartesHotel } from "../services/LogiqueAjoutHotel";
+import { LogiqueAjoutCartesHotel } from "../services/Logiques";
 
 export default function Modal({ onClose, onAddHotel }) {
   const {
@@ -63,7 +63,7 @@ export default function Modal({ onClose, onAddHotel }) {
                 label={isLoading ? "Enregistrement..." : "Enregistrer"}
                 className={"boutonEnv"}
                 disabled={isLoading}
-                onClick={handleSubmit}
+                type="submit"
               />
             </div>
           </form>

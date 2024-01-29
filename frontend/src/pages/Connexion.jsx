@@ -4,7 +4,7 @@ import CustomButton from "../composants/CustomButton";
 import LogoRedProduct from "../composants/LogoRedProduct";
 import ConnectInput from "../composants/inputFields";
 import { inputFieldsDataConnexion } from "../composants/Utils";
-import { LogiqueConnexion } from "../services/LogiquesAuthentification";
+import { LogiqueConnexion } from "../services/Logiques";
 
 export default function Connexion() {
   const { formDataConnexion, setFormDataConnexion, handleSubmit, isLoading } =
