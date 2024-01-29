@@ -1,9 +1,9 @@
 import React from "react";
 import { GoArrowLeft } from "react-icons/go";
-import ModalInput from "../composants/inputFields";
 import { inputFieldsDataModal } from "../composants/Utils";
+import ModalInput from "../composants/inputFields";
+import { LogiqueAjoutCartesHotel } from "../services/LogiquesAjoutHotel";
 import CustomButton from "./CustomButton";
-import { LogiqueAjoutCartesHotel } from "../services/Logiques";
 
 export default function Modal({ onClose, onAddHotel }) {
   const {
@@ -41,7 +41,8 @@ export default function Modal({ onClose, onAddHotel }) {
               <ModalInput
                 type="file"
                 className="ModalFile"
-                onChange={(e) => {e.target.files[0];
+                onChange={(e) => {
+                  e.target.files[0];
                 }}
               />
             </div>

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "../composants/CustomButton";
 import LogoRedProduct from "../composants/LogoRedProduct";
-import ConnectInput from "../composants/inputFields";
 import { inputFieldsDataConnexion } from "../composants/Utils";
-import { LogiqueConnexion } from "../services/Logiques";
+import ConnectInput from "../composants/inputFields";
+import { LogiqueConnexion } from "../services/LogiquesAuthentification";
 
 export default function Connexion() {
   const { formDataConnexion, setFormDataConnexion, handleSubmit, isLoading } =
