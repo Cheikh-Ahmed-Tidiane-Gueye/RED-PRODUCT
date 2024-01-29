@@ -3,7 +3,7 @@ import { GoArrowLeft } from "react-icons/go";
 import ModalInput from "../composants/inputFields";
 import { inputFieldsDataModal } from "../composants/Utils";
 import CustomButton from "./CustomButton";
-import { LogiqueAjoutCartesHotel } from "../services/Logiques";
+import { LogiqueAjoutCartesHotel } from "../services/LogiqueAjoutHotel";
 
 export default function Modal({ onClose, onAddHotel }) {
   const {
