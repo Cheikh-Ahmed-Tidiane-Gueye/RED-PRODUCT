@@ -1,9 +1,13 @@
 // server.js
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes")
 require("dotenv").config();
+
+// Augmentez la limite de taille du corps de la requête
+app.use(bodyParser.json({ limit: "10mb" })); // Augmentez ou diminuez la limite en fonction de vos besoins
 
 const app = express();
 app.use(express.json());
@@ -23,7 +27,6 @@ app.use(cors());
 app.use("/api", authRoutes);
 
 const port = process.env.PORT || 5000;
-
 
 // Lancer le serveur
 app.listen(port, () => {
