@@ -18,7 +18,20 @@ mongoose.connect(process.env.MONGO_URI)
     process.exit(1);
   });
 
-app.use(cors());
+// Définir un tableau d'origines autorisées
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://red-product.vercel.app",
+];
+
+// Utilisez la configuration CORS avec un tableau d'origines
+const corsOptions = {
+  origin: allowedOrigins,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use("/api", authRoutes);
 
