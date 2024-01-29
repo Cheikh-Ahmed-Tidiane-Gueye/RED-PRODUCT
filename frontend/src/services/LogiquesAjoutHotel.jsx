@@ -30,7 +30,8 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
 
       // Créer un objet FormData pour envoyer les données du formulaire
       const formData = new FormData();
-      formData.append("src", selectedImage);
+      // formData.append("src", selectedImage);
+      formData.append("src", formDataAjoutCartesHotel.src);
       formData.append("nom", formDataAjoutCartesHotel.nom);
       formData.append("adresse", formDataAjoutCartesHotel.adresse);
       formData.append("email", formDataAjoutCartesHotel.email);
@@ -45,13 +46,9 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
         },
       });
 
-      toast.success("Hotel ajouter avec succès");
+      toast.success("Hotel ajouter avec success");
 
-      // Inclure selectedImage lors de l'appel à onAddHotel
-      onAddHotel({
-        ...formDataAjoutCartesHotel,
-        src: selectedImage,
-      });
+      onAddHotel(formDataAjoutCartesHotel);
 
       // Réinitialiser le formulaire
       setFormDataAjoutCartesHotel({

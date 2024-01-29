@@ -13,12 +13,6 @@ export default function Modal({ onClose, onAddHotel }) {
     isLoading,
   } = LogiqueAjoutCartesHotel({ onAddHotel });
 
-  const [selectedImage, setSelectedImage] = useState(null);
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(file);
-  };
-
   return (
     <>
       <div className="Modal col-lg-6 col-md-10 col-sm-10 col-xs-12 m-auto mt-5">
@@ -51,7 +45,6 @@ export default function Modal({ onClose, onAddHotel }) {
               <ModalInput
                 type="file"
                 className="ModalFile"
-                onChange={handleImageChange}
               />
             </div>
             <div className=" d-flex justify-content-end">
