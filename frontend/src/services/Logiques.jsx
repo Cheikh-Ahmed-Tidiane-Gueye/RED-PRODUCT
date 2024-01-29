@@ -190,10 +190,8 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
       };
 
       // Appelez votre API pour ajouter l'hôtel à la base de données
-      const response = await axios.post(SERVER_URL + "/ajouthotel", newHotel, {
-        withCredentials: true,
-      });
-      console.log(response.newHotel);
+      const response = await axios.post(SERVER_URL + "/ajouthotel", newHotel);
+      
       // Vérifiez la réponse
       if (response.data && response.data.message) {
         toast.success(response.data.message);
@@ -206,7 +204,7 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
           // Mettez à jour la liste des hôtels avec les nouvelles données
           setHotelList(response.data);
         }
-        
+
         // Réinitialiser le formulaire
         setFormDataAjoutCartesHotel({
           src: "",

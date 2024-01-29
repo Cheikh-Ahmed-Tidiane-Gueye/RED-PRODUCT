@@ -41,8 +41,8 @@ export default function ListeHotel() {
     <>
       <div className="hotelContainer">
         <div className="titre">
-          <h1 className="titreHotel">
-            Hotel <span className="fw-ligh">{8}</span>
+          <h1 className="titreHotel fw-bold">
+            Hotel <span className="fw-lighter">{8}</span>
           </h1>
         </div>
         <CustomButton
