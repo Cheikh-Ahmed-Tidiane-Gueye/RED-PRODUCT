@@ -30,7 +30,6 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
 
       // Créer un objet FormData pour envoyer les données du formulaire
       const formData = new FormData();
-      // formData.append("src", selectedImage);
       formData.append("src", formDataAjoutCartesHotel.src);
       formData.append("nom", formDataAjoutCartesHotel.nom);
       formData.append("adresse", formDataAjoutCartesHotel.adresse);
