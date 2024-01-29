@@ -471,7 +471,10 @@ label {
   height: 236px;
   text-decoration: none;
 }
-.ModalFile{
+.del{
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
 }
 .boutonEnv{
   width: 178px;

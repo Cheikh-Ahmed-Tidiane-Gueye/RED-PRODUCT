@@ -1,4 +1,5 @@
 import React from 'react'
+import { MdDelete } from "react-icons/md";
 
 export default function CardHotel({src, adresse, nom, prix, devise}) {
   return (
@@ -10,9 +11,12 @@ export default function CardHotel({src, adresse, nom, prix, devise}) {
         <div className="">
           <p className="adresse">{adresse}</p>
           <h3 className="nomHotel">{nom}</h3>
-          <p className="prixHotel">
-            {prix} {devise} par nuit
-          </p>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="prixHotel">
+              {prix} {devise} par nuit
+            </p>
+              <MdDelete className='mt-4 p-2 del'/>
+          </div>
         </div>
       </div>
     </div>
