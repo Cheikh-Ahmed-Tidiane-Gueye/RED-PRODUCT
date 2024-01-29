@@ -11,7 +11,7 @@ export default function Modal({ onClose, onAddHotel }) {
     setFormDataAjoutCartesHotel,
     handleSubmit,
     isLoading,
-  } = LogiqueAjoutCartesHotel({ onAddHotel });;
+  } = LogiqueAjoutCartesHotel({ onAddHotel });
 
   return (
     <>
@@ -41,20 +41,7 @@ export default function Modal({ onClose, onAddHotel }) {
               <ModalInput
                 type="file"
                 className="ModalFile"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  const reader = new FileReader();
-
-                  reader.onloadend = () => {
-                    setFormDataAjoutCartesHotel({
-                      ...formDataAjoutCartesHotel,
-                      src: reader.result,
-                    });
-                  };
-
-                  if (file) {
-                    reader.readAsDataURL(file);
-                  }
+                onChange={(e) => {e.target.files[0];
                 }}
               />
             </div>
