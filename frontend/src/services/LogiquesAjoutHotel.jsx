@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
@@ -29,16 +28,33 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
         formDataAjoutCartesHotel
       );
 
+      // Créer un objet FormData pour envoyer les données du formulaire
+      const formData = new FormData();
+      formData.append("src", selectedImage);
+      formData.append("nom", formDataAjoutCartesHotel.nom);
+      formData.append("adresse", formDataAjoutCartesHotel.adresse);
+      formData.append("email", formDataAjoutCartesHotel.email);
+      formData.append("number", formDataAjoutCartesHotel.number);
+      formData.append("prix", formDataAjoutCartesHotel.prix);
+      formData.append("devise", formDataAjoutCartesHotel.devise);
+
       // Appelez votre API pour ajouter l'hôtel à la base de données
-      await axios.post(SERVER_URL + "/ajouthotel", formDataAjoutCartesHotel);
+      await axios.post(SERVER_URL + "/ajouthotel", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      toast.success("Hotel ajouter avec success");
+      toast.success("Hotel ajouter avec succès");
 
-      onAddHotel(formDataAjoutCartesHotel);
+      // Inclure selectedImage lors de l'appel à onAddHotel
+      onAddHotel({
+        ...formDataAjoutCartesHotel,
+        src: selectedImage,
+      });
 
       // Réinitialiser le formulaire
       setFormDataAjoutCartesHotel({
-        src: "",
         nom: "",
         adresse: "",
         email: "",
