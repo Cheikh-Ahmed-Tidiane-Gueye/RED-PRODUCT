@@ -141,40 +141,6 @@ async function getHotels(req, res) {
   }
 }
 
-// Configurer le stockage et le nom de fichier pour Multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '../images') // Chemin où les fichiers seront stockés
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now()) // Nom du fichier
-  }
-});
-
-const upload = multer({ storage: storage });
-
-// Utilisation de Multer dans votre route pour le téléchargement d'images
-router.post('/ajoutImage', upload.single('image'), (req, res, next) => {
-  const file = req.file;
-  if (!file) {
-    const error = new Error('Veuillez télécharger un fichier');
-    error.httpStatusCode = 400;
-    return next(error);
-  }
-  res.send(file); // Répondre avec les détails du fichier téléchargé
-});
-
-// Route pour supprimer un hôtel
-router.delete('/hotel/:id', async (req, res) => {
-  try {
-    const hotelId = req.params.id;
-    await hotelsModel.findByIdAndDelete(hotelId);
-    res.status(200).send({ message: 'Hôtel supprimé avec succès' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send(error);
-  }
-});
 
 const authController = {
   inscriptionUtilisateurs,
