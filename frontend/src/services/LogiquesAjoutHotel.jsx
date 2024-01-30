@@ -38,7 +38,7 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
       }
 
       const formData = new FormData();
-      formData.append("src", formDataAjoutCartesHotel.src);
+      // formData.append("src", formDataAjoutCartesHotel.src);
       formData.append("nom", formDataAjoutCartesHotel.nom);
       formData.append("adresse", formDataAjoutCartesHotel.adresse);
       formData.append("email", formDataAjoutCartesHotel.email);
@@ -53,7 +53,7 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
       console.log(data);
       toast.success("Hôtel ajouté avec succès");
 
-      onAddHotel(formDataAjoutCartesHotel);
+      onAddHotel(formData);
 
       setFormDataAjoutCartesHotel({
         src: "",
