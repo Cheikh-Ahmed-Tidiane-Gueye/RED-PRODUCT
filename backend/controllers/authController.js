@@ -82,12 +82,6 @@ async function deconnexionUtilisateurs(req, res) {
   }
 }
 
-// Récupérer l'id des utilisateurs connectés (current user)
-const getCurrentUserId = (req) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  return decodedToken.utilisateursId;
-};
 
 // Fonction d'ajout d'hotel
 async function ajouthotel(req, res) { 
