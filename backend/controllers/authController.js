@@ -94,9 +94,9 @@ async function ajouthotel(req, res) {
     const { src, nom, adresse, email, number, prix, devise } = req.body;
 
     // Vérifier que toutes les données requises sont saisies
-    if (!src || !nom || !adresse || !email || !number || !prix || !devise) {
-      return res.status(400).send({ message: "Veuillez remplir tous les champs" });
-    }
+    // if (!src || !nom || !adresse || !email || !number || !prix || !devise) {
+    //   return res.status(400).send({ message: "Veuillez remplir tous les champs" });
+    // }
 
     const newHotel = new hotelsModel({
       src,
