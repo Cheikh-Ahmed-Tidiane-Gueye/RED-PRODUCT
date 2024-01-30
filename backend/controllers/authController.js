@@ -86,19 +86,10 @@ async function deconnexionUtilisateurs(req, res) {
 // Fonction d'ajout d'hotel
 async function ajouthotel(req, res) {
   try {
-    // Récupérer les données du formulaire
     const { nom, adresse, email, number, prix, devise } = req.body;
 
-    // Vérifier que toutes les données requises sont saisies
-    if (!nom || !adresse || !email || !number || !prix || !devise) {
-      return res
-        .status(400)
-        .send({ message: "Veuillez remplir tous les champs" });
-    }
-
-    // Créer un nouvel objet hôtel avec les données du formulaire
+    // Créer un nouvel objet hôtel avec les données de la requête
     const newHotel = new hotelsModel({
-      // src,
       nom,
       adresse,
       email,
@@ -107,17 +98,16 @@ async function ajouthotel(req, res) {
       devise,
     });
 
-    // Enregistrer l'hôtel dans la base de données
+    // Enregistrer le nouvel hôtel dans la base de données
     const result = await newHotel.save();
 
-    // Afficher les informations ajoutées sur la console
-    console.log("Informations de l'hôtel ajouté :", result);
-
-    // Envoyer une réponse réussie
-    res.status(201).send({ message: "Hôtel ajouté avec succès", data: result });
+    // Envoyer une réponse avec le nouvel hôtel ajouté
+    res
+      .status(201)
+      .send({ message: "Hôtel ajouté avec succès \n", hotel: result });
   } catch (error) {
     console.error(error);
-    res.status(400).send(error);
+    res.status(400).send({ error: "Erreur lors de l'ajout de l'hôtel" });
   }
 }
 
