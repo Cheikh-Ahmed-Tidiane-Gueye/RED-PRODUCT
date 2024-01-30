@@ -89,7 +89,10 @@ async function ajouthotel(req, res) {
 }
 async function ajouthotel(req, res) {
   try {
-    const userId = getCurrentUserId(req); // Récupérer l'id de l'utilisateur connecté
+    
+    // Récupérer l'id de l'utilisateur connecté
+    const userId = getCurrentUserId(req);
+    
     // Récupérer les données du formulaire
     const { src, nom, adresse, email, number, prix, devise } = req.body;
 
@@ -106,12 +109,15 @@ async function ajouthotel(req, res) {
       number,
       prix,
       devise,
-      userId, // Associer l'id de l'utilisateur à l'hôtel
+      // userId,
     });
 
     // Enregistrer l'hôtel dans la base de données
     const result = await newHotel.save();
 
+    // Afficher les informations ajoutées sur la console
+    console.log("Informations de l'hôtel ajouté :", result);
+    
     // Envoyer une réponse réussie
     res.status(201).send({ message: "Hôtel ajouté avec succès", data: result });
   } catch (error) {
