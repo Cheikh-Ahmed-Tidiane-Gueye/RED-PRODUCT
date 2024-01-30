@@ -34,7 +34,7 @@ async function inscriptionUtilisateurs(req, res) {
 async function connexionUtilisateurs(req, res) {
   try {
     const { email, password } = req.body;
-    const utilisateur = await utilisateurs.find({ email });
+    const utilisateur = await utilisateurs.findOne({ email });
     if (!utilisateur) {
       return res.status(400).send({
         error: "Connexion échouée !",
