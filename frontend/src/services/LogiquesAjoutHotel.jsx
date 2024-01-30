@@ -16,15 +16,27 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
     prix: "",
     devise: "",
   });
-  // console.log(
-  //   "Données saisies lors de la soumission :",
-  //   formDataAjoutCartesHotel
-  // );
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
+      // Vérifier que toutes les données requises sont saisies
+      if (
+        // !formDataAjoutCartesHotel.src ||
+        !formDataAjoutCartesHotel.nom ||
+        !formDataAjoutCartesHotel.adresse ||
+        !formDataAjoutCartesHotel.email ||
+        !formDataAjoutCartesHotel.number ||
+        !formDataAjoutCartesHotel.prix ||
+        !formDataAjoutCartesHotel.devise
+      ) {
+        toast.error("Veuillez remplir tous les champs");
+        setIsLoading(false);
+        return;
+      }
+
       const formData = new FormData();
       formData.append("src", formDataAjoutCartesHotel.src);
       formData.append("nom", formDataAjoutCartesHotel.nom);
@@ -35,8 +47,10 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
       formData.append("devise", formDataAjoutCartesHotel.devise);
 
       const response = await axios.post(SERVER_URL + "/ajouthotel", formData);
-      console.log(response.data);
 
+      const data = response.data;
+
+      console.log(data);
       toast.success("Hôtel ajouté avec succès");
 
       onAddHotel(formDataAjoutCartesHotel);
@@ -57,6 +71,7 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
       setIsLoading(false);
     }
   };
+
 
   return {
     formDataAjoutCartesHotel,
