@@ -40,10 +40,7 @@ async function connexionUtilisateurs(req, res) {
         error: "Connexion échouée !",
       });
     }
-    const isPasswordValid = await bcrypt.compare(
-      password,
-      utilisateur.password
-    );
+    const isPasswordValid = await utilisateur.comparePassword(password);
     if (!isPasswordValid) {
       return res.status(400).send({
         error: "Le mot de passe ne correspond pas !",
