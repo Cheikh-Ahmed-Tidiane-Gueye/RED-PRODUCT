@@ -84,23 +84,19 @@ async function deconnexionUtilisateurs(req, res) {
 
 
 // Fonction d'ajout d'hotel
-async function ajouthotel(req, res) { 
-
-}
 async function ajouthotel(req, res) {
   try {
-    
-    // Récupérer l'id de l'utilisateur connecté
-    const userId = getCurrentUserId(req);
-    
     // Récupérer les données du formulaire
     const { src, nom, adresse, email, number, prix, devise } = req.body;
 
     // Vérifier que toutes les données requises sont saisies
-    // if (!src || !nom || !adresse || !email || !number || !prix || !devise) {
-    //   return res.status(400).send({ message: "Veuillez remplir tous les champs" });
-    // }
+    if (!src || !nom || !adresse || !email || !number || !prix || !devise) {
+      return res
+        .status(400)
+        .send({ message: "Veuillez remplir tous les champs" });
+    }
 
+    // Créer un nouvel objet hôtel avec les données du formulaire
     const newHotel = new hotelsModel({
       src,
       nom,
@@ -109,7 +105,6 @@ async function ajouthotel(req, res) {
       number,
       prix,
       devise,
-      // userId,
     });
 
     // Enregistrer l'hôtel dans la base de données
@@ -117,11 +112,11 @@ async function ajouthotel(req, res) {
 
     // Afficher les informations ajoutées sur la console
     console.log("Informations de l'hôtel ajouté :", result);
-    
+
     // Envoyer une réponse réussie
     res.status(201).send({ message: "Hôtel ajouté avec succès", data: result });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).send(error);
   }
 }
