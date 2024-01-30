@@ -25,9 +25,6 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
     setIsLoading(true);
 
     try {
-      // Afficher les données dans la console
-
-      // Créer un objet FormData pour envoyer les données du formulaire
       const formData = new FormData();
       formData.append("src", formDataAjoutCartesHotel.src);
       formData.append("nom", formDataAjoutCartesHotel.nom);
@@ -37,19 +34,15 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
       formData.append("prix", formDataAjoutCartesHotel.prix);
       formData.append("devise", formDataAjoutCartesHotel.devise);
 
-      // Appelez votre API pour ajouter l'hôtel à la base de données
-      const response = await axios.post(
-        SERVER_URL + "/ajouthotel",
-        formDataAjoutCartesHotel
-      );
+      const response = await axios.post(SERVER_URL + "/ajouthotel", formData);
       console.log(response.data);
 
-      toast.success("Hotel ajouter avec success");
+      toast.success("Hôtel ajouté avec succès");
 
       onAddHotel(formDataAjoutCartesHotel);
 
-      // Réinitialiser le formulaire
       setFormDataAjoutCartesHotel({
+        src: "",
         nom: "",
         adresse: "",
         email: "",
