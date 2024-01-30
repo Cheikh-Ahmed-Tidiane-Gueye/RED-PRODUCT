@@ -87,10 +87,10 @@ async function deconnexionUtilisateurs(req, res) {
 async function ajouthotel(req, res) {
   try {
     // Récupérer les données du formulaire
-    const { src, nom, adresse, email, number, prix, devise } = req.body;
+    const { nom, adresse, email, number, prix, devise } = req.body;
 
     // Vérifier que toutes les données requises sont saisies
-    if (!src || !nom || !adresse || !email || !number || !prix || !devise) {
+    if (!nom || !adresse || !email || !number || !prix || !devise) {
       return res
         .status(400)
         .send({ message: "Veuillez remplir tous les champs" });
@@ -98,7 +98,7 @@ async function ajouthotel(req, res) {
 
     // Créer un nouvel objet hôtel avec les données du formulaire
     const newHotel = new hotelsModel({
-      src,
+      // src,
       nom,
       adresse,
       email,

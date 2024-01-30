@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // Schéma des hotels dans la base de données MongoDB
 const hotelsSchema = mongoose.Schema({
-  src: String,
+  // src: String,
   nom: String,
   adresse: String,
   email: String,
