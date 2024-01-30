@@ -6,12 +6,8 @@ import { LogiqueAjoutCartesHotel } from "../services/LogiquesAjoutHotel";
 import CustomButton from "./CustomButton";
 
 export default function Modal({ onClose, onAddHotel }) {
-  const {
-    formDataAjoutCartesHotel,
-    setFormDataAjoutCartesHotel,
-    handleSubmit,
-    isLoading,
-  } = LogiqueAjoutCartesHotel({ onAddHotel });
+  const { formData, setFormData, handleSubmit, isLoading } =
+    LogiqueAjoutCartesHotel({ onAddHotel });
 
   return (
     <>
@@ -32,10 +28,10 @@ export default function Modal({ onClose, onAddHotel }) {
               <ModalInput
                 key={index}
                 {...field}
-                value={formDataAjoutCartesHotel[field.name]}
+                value={formData[field.name]}
                 onChange={(e) =>
-                  setFormDataAjoutCartesHotel({
-                    ...formDataAjoutCartesHotel,
+                  setFormData({
+                    ...formData,
                     [field.name]: e.target.value,
                   })
                 }

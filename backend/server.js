@@ -7,6 +7,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
+app.use("/images", express.static("./images"));
 
 // Connexion à la base de donnée
 mongoose.connect(process.env.MONGO_URI)

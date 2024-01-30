@@ -88,6 +88,11 @@ async function ajouthotel(req, res) {
   try {
     const { nom, adresse, email, number, prix, devise } = req.body;
 
+    // Obtenez le chemin de l'image à partir de la requête
+    const imagePath = req.file
+      ? "/images/" + Date.now() + "-" + req.file.originalname
+      : null;
+
     // Créer un nouvel objet hôtel avec les données de la requête
     const newHotel = new hotelsModel({
       nom,
@@ -96,6 +101,7 @@ async function ajouthotel(req, res) {
       number,
       prix,
       devise,
+      image: imagePath,
     });
 
     // Enregistrer le nouvel hôtel dans la base de données
@@ -122,7 +128,6 @@ async function getHotels(req, res) {
     res.status(500).send(error);
   }
 }
-
 
 const authController = {
   inscriptionUtilisateurs,
