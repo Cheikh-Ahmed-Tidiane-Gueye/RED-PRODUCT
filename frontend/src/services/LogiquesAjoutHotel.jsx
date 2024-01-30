@@ -8,11 +8,12 @@ const SERVER_URL = "https://red-product-tzz8.onrender.com/api";
 export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
+    image: "",
     nom: "",
     adresse: "",
     email: "",
-    number: 0,
-    prix: 0,
+    number: "",
+    prix: "",
     devise: "",
   });
 
@@ -29,11 +30,12 @@ export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
         onAddHotel(response.data.hotel);
         toast.success("Hôtel ajouté avec succès");
         setFormData({
+          image: "",
           nom: "",
           adresse: "",
           email: "",
-          number: 0,
-          prix: 0,
+          number: "",
+          prix: "",
           devise: "",
         });
       } else {

@@ -185,50 +185,50 @@ export const inputFieldsDataModal = [
 // Données cates d'hotels
 export const CardHotelDatas = [
   {
-    src: "",
+    image: "",
     adresse: "Boulevard Martin Luther King Dakar, 11500",
     nom: "Hôtel Terrou-Bi",
     prix: "25.000 XOF par nuit",
     className: "col-lg-3 col-md-5 col-sm-9 col-xs-12 px-0 px-sx-3"
   },
   {
-    src: "",
+    image: "",
     adresse: "Rte des Almadies, Dakar",
     nom: "King Fahd Palace",
     prix: "20.000 XOF par nuit",
   },
   {
-    src: "",
+    image: "",
     adresse: "Rte de la Corniche O, Dakar 16868",
     nom: "Radisson Blu Hotel",
     prix: "22.000 XOF par nuit",
   },
   {
-    src: "",
+    image: "",
     adresse: "Place de l'Independance, 10 Rue PL 29, Dakar",
     nom: "Pullman Dakar Teranga",
     prix: "30.000 XOF par nuit",
   },
   {
-    src: "",
+    image: "",
     adresse: "Lac Rose, Dakar",
     nom: "Hôtel Lac Rose",
     prix: "25.000 XOF par nuit",
   },
   {
-    src: "",
+    image: "",
     adresse: "Mbour, Sénégal",
     nom: "Hôtel Saly",
     prix: "20.000 XOF par nuit",
   },
   {
-    src: "",
+    image: "",
     adresse: "BP64, Saly 23000",
     nom: "Palm Beach Resort & Spa",
     prix: "22.000 XOF par nuit",
   },
   {
-    src: "",
+    image: "",
     adresse: "Place de l'Independance, 10 Rue PL 29, Dakar",
     nom: "Pullman Dakar Teranga",
     prix: "30.000 XOF par nuit",

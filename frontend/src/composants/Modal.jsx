@@ -38,7 +38,7 @@ export default function Modal({ onClose, onAddHotel }) {
               />
             ))}
             <div className="myInputModalFile">
-              <ModalInput type="file" className="ModalFile" />
+              <ModalInput type="file" name="image" className="ModalFile" />
             </div>
             <div className=" d-flex justify-content-end">
               <CustomButton
