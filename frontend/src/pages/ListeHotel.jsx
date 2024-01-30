@@ -2,14 +2,16 @@ import React, { useState, useEffect   } from "react";
 import CustomButton from "../composants/CustomButton";
 import { AiOutlinePlus } from "react-icons/ai";
 import CardHotel from "../composants/CardHotel";
-import { CardHotelDatas } from "../composants/Utils";
+// import { CardHotelDatas } from "../composants/Utils";
 import Modal from "../composants/Modal";
 import axios from "axios";
 
 const SERVER_URL = "https://red-product-tzz8.onrender.com/api";
+
 export default function ListeHotel() {
   const [isModalVisible, setModalVisible] = useState(false);
   const [hotelList, setHotelList] = useState([]);
+  
   const handleModalToggle = () => {
     setModalVisible(!isModalVisible);
   };
@@ -42,7 +44,7 @@ export default function ListeHotel() {
       <div className="hotelContainer">
         <div className="titre">
           <h1 className="titreHotel fw-bold">
-            Hotel <span className="fw-lighter">{8}</span>
+            Hotel <span className="fw-lighter">{hotelList.length}</span>
           </h1>
         </div>
         <CustomButton

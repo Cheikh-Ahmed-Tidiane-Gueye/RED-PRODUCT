@@ -1,82 +1,57 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-// const SERVER_URL = "https://red-product-tzz8.onrender.com/api";
+
 const SERVER_URL = "https://red-product-tzz8.onrender.com/api";
 
 // Logique ajout cartes d'hotels
 export const LogiqueAjoutCartesHotel = ({ onAddHotel }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [formDataAjoutCartesHotel, setFormDataAjoutCartesHotel] = useState({
-    src: "",
+  const [formData, setFormData] = useState({
     nom: "",
     adresse: "",
     email: "",
-    number: "",
-    prix: "",
+    number: 0,
+    prix: 0,
     devise: "",
   });
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      // Vérifier que toutes les données requises sont saisies
-      if (
-        // !formDataAjoutCartesHotel.src ||
-        !formDataAjoutCartesHotel.nom ||
-        !formDataAjoutCartesHotel.adresse ||
-        !formDataAjoutCartesHotel.email ||
-        !formDataAjoutCartesHotel.number ||
-        !formDataAjoutCartesHotel.prix ||
-        !formDataAjoutCartesHotel.devise
-      ) {
-        toast.error("Veuillez remplir tous les champs");
-        setIsLoading(false);
-        return;
-      }
-
-      const formData = new FormData();
-      // formData.append("src", formDataAjoutCartesHotel.src);
-      formData.append("nom", formDataAjoutCartesHotel.nom);
-      formData.append("adresse", formDataAjoutCartesHotel.adresse);
-      formData.append("email", formDataAjoutCartesHotel.email);
-      formData.append("number", formDataAjoutCartesHotel.number);
-      formData.append("prix", formDataAjoutCartesHotel.prix);
-      formData.append("devise", formDataAjoutCartesHotel.devise);
-
+      // Envoi de la requête POST avec les données du formulaire
       const response = await axios.post(SERVER_URL + "/ajouthotel", formData);
 
-      const data = response.data;
-
-      console.log(data);
-      toast.success("Hôtel ajouté avec succès");
-
-      onAddHotel(formData);
-
-      setFormDataAjoutCartesHotel({
-        src: "",
-        nom: "",
-        adresse: "",
-        email: "",
-        number: "",
-        prix: "",
-        devise: "",
-      });
+      // Si la requête est réussie, on appelle la fonction onAddHotel avec le nouvel hôtel ajouté
+      if (response.data && response.data.hotel) {
+        onAddHotel(response.data.hotel);
+        toast.success("Hôtel ajouté avec succès");
+        setFormData({
+          nom: "",
+          adresse: "",
+          email: "",
+          number: 0,
+          prix: 0,
+          devise: "",
+        });
+      } else {
+        toast.error("Erreur lors de l'ajout de l'hôtel");
+      }
     } catch (error) {
       console.error(error);
-      toast.error("Une erreur s'est produite lors de l'ajout de l'hôtel.");
+      toast.error("Erreur lors de la requête d'ajout d'hôtel");
     } finally {
       setIsLoading(false);
     }
   };
 
-
   return {
-    formDataAjoutCartesHotel,
-    setFormDataAjoutCartesHotel,
+    formData,
+    setFormData,
     handleSubmit,
     isLoading,
   };
 };
+
