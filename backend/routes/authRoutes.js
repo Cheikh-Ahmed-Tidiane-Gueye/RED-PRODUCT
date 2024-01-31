@@ -2,16 +2,28 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const authController = require("../controllers/authController");
+const path = require("path");
 
 // Configuration de Multer pour gérer le téléchargement des images
+
 const storage = multer.memoryStorage({
   destination: function (req, file, cb) {
-    cb(null, "../images");
+    cb(null, path.join(__dirname, "../images"));
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
+
+// const storage = multer.memoryStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "./images");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + "-" + file.originalname);
+//   },
+// });
+
 const upload = multer({ storage: storage });
 
 router.post("/inscription", authController.inscriptionUtilisateurs);
